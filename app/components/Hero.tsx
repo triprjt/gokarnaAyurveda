@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Hero() {
   const [showFirstText, setShowFirstText] = useState(false);
   const [showSecondText, setShowSecondText] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setShowFirstText(true);
@@ -13,6 +13,23 @@ export default function Hero() {
       setShowSecondText(true);
     }, 2000);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Ensure video autoplays
+      video.muted = true;
+      video.autoplay = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.controls = false;
+      
+      // Play the video
+      video.play().catch(err => {
+        console.log('Autoplay prevented:', err);
+      });
+    }
   }, []);
 
   const handleScrollDown = () => {
@@ -24,37 +41,40 @@ export default function Hero() {
 
   return (
     <div id="home" className="relative min-h-screen flex items-center justify-center">
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-[1]"
-        >
-          <source src="/sunset.mp4" type="video/mp4" />
-        </video>
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
+          <video
+            ref={videoRef}
+            id="background-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-screen h-screen object-cover pointer-events-none"
+          >
+            <source src="https://res.cloudinary.com/daydyqxdw/video/upload/sunset_mqfjnr.webm" type="video/webm" />
+            <source src="https://res.cloudinary.com/daydyqxdw/video/upload/sunset_mqfjnr.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
       </div>
       <div className="relative z-10 text-right h-40vh px-4 sm:px-6 lg:px-8 w-full">
         <h1 className="text-3xl sm:text-5xl lg:text-7xl sm:gap-1 lg:gap-8 font-bold text-white mb-6 leading-tight">
-          <span 
-            className={`block transition-opacity duration-1000 ${
-              showFirstText ? 'opacity-100' : 'opacity-0'
-            }`}
+          <span
+            className={`block transition-opacity duration-1000 ${showFirstText ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             Discover Serenity at
           </span>
-          <span 
-            className={`inline-flex items-center gap-2 text-emerald-300 mt-2 transition-opacity duration-1000 ${
-              showSecondText ? 'opacity-100' : 'opacity-0'
-            }`}
+          <span
+            className={`inline-flex items-center gap-2 text-emerald-300 mt-2 transition-opacity duration-1000 ${showSecondText ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             Ayurveda Gokarna
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 24 24" 
-              fill="currentColor" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
               onClick={() => {
                 const url = 'https://maps.app.goo.gl/ZaaHKu2h4mpLufxG8';
                 window.open(url, '_blank');
@@ -83,7 +103,7 @@ export default function Hero() {
           </a>
         </div> */}
       </div>
-      <div 
+      <div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
         onClick={handleScrollDown}
       >
