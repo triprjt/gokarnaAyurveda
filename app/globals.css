@@ -164,20 +164,60 @@ body {
 /* Global padding for Retreat, Testimonials, and Services components */
 #retreats,
 #testimonials {
-  padding-left: 5rem;
-  /* px-4 */
-  padding-right: 5rem;
-  /* px-4 */
+  padding-left: 1rem; /* px-4 on mobile */
+  padding-right: 1rem; /* px-4 on mobile */
 }
+
+@media (min-width: 640px) {
+  #retreats,
+  #testimonials {
+    padding-left: 1.5rem; /* px-6 on sm */
+    padding-right: 1.5rem; /* px-6 on sm */
+  }
+}
+
+@media (min-width: 1024px) {
+  #retreats,
+  #testimonials {
+    padding-left: 5rem; /* px-20 on lg */
+    padding-right: 5rem; /* px-20 on lg */
+  }
+}
+
 #services {
-  padding-left: 2rem;
-  /* px-4 */
-  padding-right: 2rem;
-  /* px-4 */
+  padding-left: 1rem; /* px-4 on mobile */
+  padding-right: 1rem; /* px-4 on mobile */
 }
+
+@media (min-width: 640px) {
+  #services {
+    padding-left: 1.5rem; /* px-6 on sm */
+    padding-right: 1.5rem; /* px-6 on sm */
+  }
+}
+
+@media (min-width: 1024px) {
+  #services {
+    padding-left: 2rem; /* px-8 on lg */
+    padding-right: 2rem; /* px-8 on lg */
+  }
+}
+
 #faq {
-  padding-left: 2rem;
-  /* px-4 */
-  padding-right: 2rem;
-  /* px-4 */
+  padding-left: 1rem; /* px-4 on mobile */
+  padding-right: 1rem; /* px-4 on mobile */
+}
+
+@media (min-width: 640px) {
+  #faq {
+    padding-left: 1.5rem; /* px-6 on sm */
+    padding-right: 1.5rem; /* px-6 on sm */
+  }
+}
+
+@media (min-width: 1024px) {
+  #faq {
+    padding-left: 2rem; /* px-8 on lg */
+    padding-right: 2rem; /* px-8 on lg */
+  }
 }
