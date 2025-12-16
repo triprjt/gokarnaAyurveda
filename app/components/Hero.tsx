@@ -40,22 +40,20 @@ export default function Hero() {
   };
 
   return (
-    <div id="home" className="relative min-h-screen flex items-center justify-center">
+    <div id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
-          <video
-            ref={videoRef}
-            id="background-video"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-screen h-screen object-cover pointer-events-none"
-          >
-            <source src="https://res.cloudinary.com/daydyqxdw/video/upload/sunset_mqfjnr.webm" type="video/webm" />
-            <source src="https://res.cloudinary.com/daydyqxdw/video/upload/sunset_mqfjnr.mp4" type="video/mp4" />
-          </video>
-        </div>
+        <video
+          ref={videoRef}
+          id="background-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-full h-full object-cover pointer-events-none"
+        >
+          <source src="https://res.cloudinary.com/daydyqxdw/video/upload/sunset_mqfjnr.webm" type="video/webm" />
+          <source src="https://res.cloudinary.com/daydyqxdw/video/upload/sunset_mqfjnr.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
       </div>
       <div className="relative z-10 text-right h-40vh px-4 sm:px-6 lg:px-8 w-full">
@@ -123,4 +121,3 @@ export default function Hero() {
     </div>
   );
 }
-
