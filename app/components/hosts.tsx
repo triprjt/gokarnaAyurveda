@@ -42,7 +42,7 @@ Think of her as your personal host, friend, and translator if needed.`,
     ]
 
     return (
-        <div className="flex relative h-screen">
+        <div id="hosts" className="flex relative h-screen">
             <div className="absolute inset-0 z-0">
                 <Image
                     src="/gokarnaTrees1.jpg"
