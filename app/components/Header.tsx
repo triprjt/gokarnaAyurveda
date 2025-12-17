@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,13 +11,11 @@ export default function Header() {
     }
 
     return (
-        <header className="absolute top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm sticky">
+        <header className="absolute top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm shadow-sm sticky">
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    <div className="flex-shrink-0">
-                        <Link href="/" className="text-2xl font-bold text-emerald-800">
-                            Ayurveda Gokarna
-                        </Link>
+                    <div className="flex-shrink-0 w-fit h-fit rounded-full overflow-hidden">
+                        <Image src="/ayurvedaLogo.jpeg" alt="Ayurveda Logo" width={64} height={64} />
                     </div>
                     <div className="hidden md:flex items-center space-x-8">
                         <Link href="#home" className="text-gray-700 hover:text-emerald-700 transition-colors">
