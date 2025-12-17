@@ -33,7 +33,7 @@ const Footer = () => {
                     <div className=" lg:flex lg:items-start lg:col-span-1">
                         <div>
                             <h3 className="text-gray-800 font-bold text-center lg:text-left mb-4">Links</h3>
-                            <ul className="grid grid-cols-4 lg:grid-cols-1 w-full text-center lg:text-left">
+                            <ul className="grid grid-cols-2 lg:grid-cols-1 w-full text-center lg:text-left">
                                 <li>
                                     <a href="#home" className="text-emerald-600 hover:text-emerald-700">Home</a>
                                 </li>
