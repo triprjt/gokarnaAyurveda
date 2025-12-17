@@ -52,7 +52,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <main className="min-h-screen w-full overflow-x-hidden">
-        {/* <Header /> */}
+        <Header />
         <Hero />
         <HealYourself />
         <Retreat/>
