@@ -25,7 +25,7 @@ const Footer = () => {
                             <h3 className="text-gray-800 font-bold text-center lg:text-left mb-4">Contacts</h3>
                             <div className="text-gray-700 space-y-1 text-center lg:text-left">
                                 <p>ayurvedagokarna@gmail.com</p>
-                                <p>Phone: +917895864381</p>
+                                <p>Phone: +919741202401</p>
                             </div>
                         </div>
                     </div>
