@@ -40,10 +40,10 @@ Evening: Free time for silence, walks, or sunset viewing
 Emphasis on slow living with no rigid schedule.` },
         { question: "How do I get to the retreat?", answer: `Fly into Goa (GOI) or Bangalore (BLR) airports. The team can arrange trusted taxi pickup. Gokarna is a scenic few-hour drive from Goa.` },
         { question: "Is Gokarna safe and suitable for first-time visitors to India, especially solo female travelers?", answer: `Yes. Gokarna is peaceful, clean, safe, spiritually rich, and far from tourist crowds. Many solo female travelers visit comfortably.` },
-        { question: "What languages are spoken at the retreat?", answer: `English, Russian, German, Hindi, Kannada. Key team members: Dr. Ratan (English, Hindi, Kannada), Lily (Russian & English).` },
+        { question: "What languages are spoken at the retreat?", answer: `English, Russian, German, Hindi, Kannada. Key team members: Dr. Ratan (English, Hindi, Kannada), Lilia (Russian & English).` },
         {
             question: "Who will take care of me?", answer: `Dr. Ratan: Main Ayurvedic doctor (20+ years experience)
-Lily: Russian-speaking guest coordinator
+Lilia: Russian-speaking guest coordinator
 Experienced North & South Indian therapy team
 Personal, family-like care is emphasized.` },
         { question: "Why choose this retreat over others (e.g., in Europe, Bali)?", answer: `Authentic generational Ayurveda, personal heart-centered care, untouched nature, significantly lower cost, less commercial, more genuine healing experience.` },

@@ -25,9 +25,9 @@ Guests often describe his approach as “clear, intuitive, and deeply reassuring
             skills: ["Speaks: German, Russian, English, Kannada, Hindi", "Specialties: Panchakarma, mind-body detox, chronic imbalance correction"]
         },
         {
-            name: "Lily",
+            name: "Lilia",
             image: "/lily.jpg",
-            description: `Lily is your bridge to everything — from the first WhatsApp message to your last day at the retreat.
+            description: `Lilia is your bridge to everything — from the first WhatsApp message to your last day at the retreat.
 She speaks Russian and English fluently, and has helped hundreds of guests from Europe feel safe,
 informed, and relaxed before they even arrive.
 Think of her as your personal host, friend, and translator if needed.`,

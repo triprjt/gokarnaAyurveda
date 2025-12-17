@@ -31,10 +31,7 @@ export default function Header() {
                         <Link href="#contact" className="text-gray-700 hover:text-emerald-700 transition-colors">
                             Contact
                         </Link>
-                        <Link
-                            href="#book"
-                            className="bg-emerald-700 text-white px-6 py-2 rounded-full hover:bg-emerald-800 transition-colors"
-                        >
+                        <Link href="https://wa.me/919741202401?text=Hello%20please%20book%20my%20stay!" target="_blank" className="bg-emerald-700 text-white px-6 py-2 rounded-full hover:bg-emerald-800 transition-colors">
                             Book Now
                         </Link>
                     </div>
@@ -62,7 +59,7 @@ export default function Header() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="#book" className="bg-emerald-700 text-white px-6 py-2 rounded-full hover:bg-emerald-800 transition-colors">
+                                    <Link href="https://wa.me/919741202401?text=Hello%20please%20book%20my%20stay!" target="_blank" className="bg-emerald-700 text-white px-6 py-2 rounded-full hover:bg-emerald-800 transition-colors">
                                         Book Now
                                     </Link>
                                 </li>

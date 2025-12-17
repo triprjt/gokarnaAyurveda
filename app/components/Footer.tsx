@@ -44,7 +44,7 @@ const Footer = () => {
                                     <a href="#courses" className="text-emerald-600 hover:text-emerald-700">Courses</a>
                                 </li>
                                 <li className="w-full">
-                                    <a href="#reservation" className="text-emerald-600 hover:text-emerald-700">Online Reservation</a>
+                                    <a href="https://wa.me/919741202401?text=Hello%20please%20book%20my%20stay!" target="_blank" className="text-emerald-600 hover:text-emerald-700">Online Reservation</a>
                                 </li>
                             </ul>
                         </div>
