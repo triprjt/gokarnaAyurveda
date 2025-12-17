@@ -1,142 +1,140 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useState, useEffect } from "react";
+import Image from 'next/image';
+import { ReactLenis, useLenis } from 'lenis/react'; // Correct import
+import './HealYourself.css';
+import { useRef, RefObject, createRef, useEffect, useState } from 'react';
+import { playfair, inter } from "@/app/fonts";
 
-interface SectionData {
-  heading: string;
-  description: string[];
-  image: string;
-}
-
-interface HealSectionProps {
-  item: SectionData;
-  index: number;
-  onInView: (index: number) => void;
-  isActive: boolean;
-}
-
-const HealSection = ({ item, index, onInView, isActive }: HealSectionProps) => {
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    rootMargin: "-20% 0px -20% 0px"
-  });
-
-  useEffect(() => {
-    if (inView) {
-      onInView(index);
-    }
-  }, [inView, index, onInView]);
-
-  return (
-    <motion.div
-      ref={ref}
-      className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden border-t border-emerald-100/50 shadow-sm first:border-t-0"
-      style={{
-        backgroundColor: "#f0fdf4",
-        zIndex: index + 1,              
-      }}
-    >
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 lg:gap-16">
-          
-          {/* Text Section */}
-          <div className="flex flex-col justify-center">
-            <motion.h3 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: isActive ? 1 : 0.5,
-                y: isActive ? 0 : 20
-              }}
-              transition={{ duration: 0.5 }}
-              className="mb-6 text-3xl font-bold text-emerald-900 sm:text-4xl md:text-5xl"
-            >
-              {item.heading}
-            </motion.h3>
-            <ul className="space-y-4">
-              {item.description.map((desc, descIndex) => (
-                <li
-                  key={descIndex}
-                  className="flex items-start text-lg text-gray-700 md:text-xl"
-                >
-                  {desc}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Image Section */}
-          <div className="flex items-center justify-center">
-            <div className="relative h-48 w-48 overflow-hidden rounded-full border-8 border-emerald-100/50 shadow-2xl sm:h-48 sm:w-48 ">
-              <Image
-                src={item.image}
-                alt={item.heading}
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+const textData = [
+  {
+    word: "mind",
+    description: [
+      "Guided meditation & breathwork",
+      "Stress detox rituals",
+      "Digital-detox environment",
+      "Emotional clarity sessions with experts",
+      "Silent ocean walks to calm mental noise",
+    ],
+    image: "/mind.jpeg",
+  },
+  {
+    word: "body",
+    description: [
+      "Personalized Ayurvedic therapies",
+      "Dosha-specific healing plan",
+      "Daily yoga for strength & flexibility",
+      "Ayurvedic meals, herbal drinks, fruits, coconut",
+    ],
+    image: "/body.jpeg",
+  },
+  {
+    word: "soul",
+    description: [
+      "Reconnect. Realign. Awaken.",
+      "Mountain-side contemplation",
+      "Ocean-energy balancing",
+      "Chakra-aligned practices",
+      "Traditional rituals for emotional release",
+      "Meaningful conversations with healers",
+    ],
+    image: "/soul.jpeg",
+  },
+];
 
 const HealYourself = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  
-  const textData: SectionData[] = [
-    {
-      heading: "Heal the mind",
-      description: [
-        `Guided meditation & breathwork`,
-        `Stress detox rituals`,
-        `Digital-detox environment`,
-        `Emotional clarity sessions with experts`,
-        `Silent ocean walks to calm mental noise`,
-      ],
-      image: "/mind.jpeg",
-    },
-    {
-      heading: "Heal the body",
-      description: [
-        `Personalized Ayurvedic therapies`,
-        `Dosha-specific healing plan`,
-        `Daily yoga for strength & flexibility`,
-        `Ayurvedic meals, herbal drinks, fruits, coconut`,
-      ],
-      image: "/body.jpeg",
-    },
-    {
-      heading: "Heal the soul",
-      description: [
-        `Reconnect. Realign. Awaken.`,
-        `Mountain-side contemplation`,
-        `Ocean-energy balancing`,
-        `Chakra-aligned practices`,
-        `Traditional rituals for emotional release`,
-        `Meaningful conversations with healers`,
-      ],
-      image: "/soul.jpeg",
-    },
-  ];
+
+  const accentColors = {
+    mind: "#7FB9B2",   // calm teal (from image)
+    body: "#C49A6C",   // warm earthy sand
+    soul: "#9B8AD6",   // soft spiritual lavender
+  };
+
+  const sectionRefs = useRef<RefObject<HTMLDivElement | null>[]>(textData.map(() => createRef<HTMLDivElement>()));
+  const [inViewSections, setInViewSections] = useState<Set<number>>(new Set());
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    sectionRefs.current.forEach((sectionRef, index) => {
+      if (!sectionRef.current) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const rect = entry.boundingClientRect;
+            const midViewportHeight = window.innerHeight / 2;
+            
+            // Check if element has reached mid-viewport height
+            // Element is considered visible when its top reaches or passes mid-viewport
+            // and it's still intersecting with the viewport
+            const hasReachedMidViewport = rect.top <= midViewportHeight && rect.bottom >= 0;
+            
+            setInViewSections((prev) => {
+              const next = new Set(prev);
+              if (hasReachedMidViewport && entry.isIntersecting) {
+                next.add(index);
+              } else {
+                next.delete(index);
+              }
+              return next;
+            });
+          });
+        },
+        {
+          threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+          rootMargin: '0px',
+        }
+      );
+
+      observer.observe(sectionRef.current);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
+
+  useLenis(() => {});
 
   return (
-    <section className="relative w-full bg-emerald-50" style={{ height: `${textData.length * 100}vh` }}>
-      {textData.map((item, index) => (
-        <HealSection
-          key={index}
-          item={item}
-          index={index}
-          onInView={setActiveIndex}
-          isActive={activeIndex === index}
-        />
-      ))}
-    </section>
-  );
+    <ReactLenis root>
+      {textData.map((item, index) => {
+        const sectionRef = sectionRefs.current[index];
+        const isInView = inViewSections.has(index);
+        return (
+          <section ref={sectionRef} key={index} className={`relative h-[100vh] flex flex-col mt-10 mb-5 sm:mt-20 sm:mb-10 sm:flex-row items-center justify-center px-4 sm:px-6 lg:px-8 ${isInView ? "section-enter" : "section-exit"}`}>
+            <div className={`relative rounded-full w-35 h-35 sm:w-50 sm:h-50 freeze-animate ${isInView ? "image-enter" : "image-exit"}`} >
+              <Image src={item.image} alt={item.word} fill className="rounded-full object-cover " />
+            </div>
+            <div className=' flex flex-col justify-center items-center'>
+              <h1 className={`${playfair.className} text-3xl md:text-6xl font-bold mb-6 sm:mb-12 freeze-animate ${isInView ? "heading-enter" : "heading-exit"}`}>
+                Heal the <span style={{ color: accentColors[item.word as keyof typeof accentColors] }}
+                  className="font-semibold tracking-tight">{item.word}</span>
+              </h1>
+              <div className={`space-y-4
+                  text-md sm:text-lg md:text-xl
+                  leading-[1.55]
+                  tracking-tight sm:text-lg md:text-xl leading-relaxed freeze-animate ${isInView ? "text-enter" : "text-exit"}`}>
+                {item.description.map((line, i) => (
+                  <p className={`${inter.className} max-w-xl
+                  
+                  text-gray-600
+                  text-center
+                  mx-auto
+                `} key={i}>{line}</p>
+                ))}
+              </div>
+            </div>
+
+          </section>
+        );
+      })}
+
+    </ReactLenis>
+  )
+
 };
 
 export default HealYourself;

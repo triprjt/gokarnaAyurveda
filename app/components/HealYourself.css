@@ -1,0 +1,114 @@
+/* Shared animation base */
+.freeze-animate {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+  
+  /* Image animation */
+  .image-enter {
+    animation: imageReveal 0.8s ease-out forwards;
+  }
+  
+  @keyframes imageReveal {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Heading animation */
+  .heading-enter {
+    animation: textSlideUp 0.7s ease-out forwards;
+  }
+  
+  @keyframes textSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Paragraph animation */
+  .text-enter {
+    animation: textFade 0.6s ease-out forwards;
+  }
+  
+  @keyframes textFade {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .mind-accent {
+    color: #7FB9B2;
+  }
+  .body-accent {
+    color: #F5C26B;
+  }
+  .soul-accent {
+    color: #F56B6B;
+  }
+
+  /* SECTION */
+.section-enter {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .section-exit {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+/* Image - starts hidden, animates to visible */
+.freeze-animate.image-exit {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.image-enter {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Heading - starts hidden, animates to visible */
+.freeze-animate.heading-exit {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.heading-enter {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+/* Text - starts hidden, animates to visible */
+.freeze-animate.text-exit {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.text-enter {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}

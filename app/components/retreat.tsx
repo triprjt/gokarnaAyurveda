@@ -75,6 +75,7 @@ const Retreat = () => {
                                         src={imagePath}
                                         alt={`Retreat ${index + 1}`}
                                         fill
+                                        sizes="(max-width: 640px) 256px, (max-width: 1024px) 384px, 500px"
                                         className="object-cover rounded-lg shadow-lg"
                                     />
                                 </div>
