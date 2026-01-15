@@ -36,8 +36,8 @@ Think of her as your personal host, friend, and translator if needed.`,
         {
             name: "Robin",
             image: "/robin.jpg",
-            description: `Robin is a MBBS and MD with over 3 years of experience.`,
-            skills: ["Speaks: English", "Specialties: MBBS and MD"]
+            description: `Robin is MD Physician (MBBS) with over 3 years of experience.`,
+            skills: ["Speaks: English", "Specialties: MD Physician (MBBS)"]
         },
     ]
 
